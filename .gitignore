@@ -1,0 +1,20 @@
+# .gitignore
+
+# Ignore the virtual environment
+venv/
+
+# Ignore pycache directories
+__pycache__/
+
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore Flask file-based session storage.
+.flask_session/
+
+# Ignore Pytest cache
+.pytest_cache/
+
+# Ignore VS Code settings
+.vscode/
