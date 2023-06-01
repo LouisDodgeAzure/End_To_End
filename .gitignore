@@ -2,19 +2,106 @@
 
 # Ignore the virtual environment
 venv/
+.env
+.venv
+env/
+ENV/
+env.bak/
+venv.bak/
 
-# Ignore pycache directories
+# Ignore pycache directories, byte-compiled / optimized / DLL files
 __pycache__/
+*.py[cod]
+*$py.class
 
-*.pyc
-*.pyo
-*.pyd
+# C extensions
+*.so
 
-# Ignore Flask file-based session storage.
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+
+# Flask stuff:
+instance/
+.webassets-cache
 .flask_session/
 
-# Ignore Pytest cache
-.pytest_cache/
+# Scrapy stuff:
+.scrapy
 
-# Ignore VS Code settings
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# celery beat schedule file
+celerybeat-schedule
+
+# SageMath parsed files
+*.sage.py
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+
+# VS Code settings
 .vscode/
