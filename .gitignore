@@ -105,3 +105,9 @@ celerybeat-schedule
 
 # VS Code settings
 .vscode/
+
+# Terraform files
+*.tfstate
+*.tfstate.backup
+*.tfvars
+.terraform*
