@@ -8,6 +8,7 @@ env/
 ENV/
 env.bak/
 venv.bak/
+wsl_venv/
 
 # Ignore pycache directories, byte-compiled / optimized / DLL files
 __pycache__/
