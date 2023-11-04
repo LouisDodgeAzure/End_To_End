@@ -2,6 +2,16 @@ provider "azurerm" {
   features {}
 }
 
+#Backend config initially created by bicep. Tenant and subscription ID supplied via environment variables.
+terraform {
+  backend "azurerm" {
+    storage_account_name = "tfbackendwebappsa"
+    container_name       = "tfstate"
+    key                  = "terraform.tfstate"
+    use_azuread_auth     = true
+  }
+}
+
 resource "azurerm_resource_group" "main" {
   name     = var.resource_group_name
   location = var.location
