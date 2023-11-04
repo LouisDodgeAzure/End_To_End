@@ -1,0 +1,2 @@
+#Contains project-wide dependencies such as pre-commit hooks
+pre-commit
