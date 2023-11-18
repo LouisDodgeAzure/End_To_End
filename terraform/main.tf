@@ -41,9 +41,10 @@ resource "azurerm_linux_web_app" "main" {
 
   site_config {
     always_on        = true
+    container_registry_use_managed_identity = true
 
     application_stack {
-      docker_image_name = "${azurerm_container_registry.main.name}.azurecr.io/${var.image_name}"
+      docker_image_name = var.image_name
       docker_registry_url = "https://${azurerm_container_registry.main.login_server}"
     }
   }
