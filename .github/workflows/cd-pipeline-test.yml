@@ -1,0 +1,44 @@
+name: Build and deploy a container image to Azure Web Apps
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+      id-token: write
+      contents: read
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@main
+
+    - name: 'Az CLI login'
+      uses: azure/login@v1
+      with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+    - name: Login to Azure Container Registry
+      run: |
+        az acr login --name ldacrendtoend
+
+    - name: Build and push the image
+      run: |
+        docker build ./microservices/frontend -t ldacrendtoend.azurecr.io/myimage:${{ github.sha }}
+        docker push ldacrendtoend.azurecr.io/myimage:${{ github.sha }}
+
+    # Terraform Setup
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+
+    # Terraform Apply
+    - name: Update Infrastructure with Terraform
+      run: |
+        terraform -chdir=terraform init
+        terraform -chdir=terraform apply -auto-approve -var "image_name=myimage:${{ github.sha }}"

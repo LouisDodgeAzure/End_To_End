@@ -36,7 +36,7 @@ resource "azuread_application_federated_identity_credential" "example" {
 }
 
 resource "azurerm_role_assignment" "example" {
-  scope                = azurerm_resource_group.example.id
+  scope                = data.azurerm_subscription.current.id
   role_definition_name = "Contributor"
   principal_id         = azuread_service_principal.example.object_id
 }
@@ -61,3 +61,4 @@ resource "github_actions_secret" "azure_subscription_id" {
 }
 
 data "azuread_client_config" "current" {}
+data "azurerm_subscription" "current" {}
