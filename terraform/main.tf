@@ -1,6 +1,7 @@
 provider "azurerm" {
   features {}
   use_oidc = true
+  storage_use_azuread  = true
 }
 
 #Backend config initially created by bicep. Tenant and subscription ID supplied via environment variables.
@@ -9,7 +10,8 @@ terraform {
     storage_account_name = "tfbackendwebappsa"
     container_name       = "tfstate"
     key                  = "terraform.tfstate"
-    use_azuread_auth = true
+    use_oidc             = true
+    use_azuread_auth     = true
   }
 }
 
