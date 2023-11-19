@@ -1,5 +1,6 @@
 provider "azurerm" {
   features {}
+  use_oidc = true
 }
 
 #Backend config initially created by bicep. Tenant and subscription ID supplied via environment variables.
