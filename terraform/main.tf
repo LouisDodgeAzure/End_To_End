@@ -9,7 +9,7 @@ terraform {
     storage_account_name = "tfbackendwebappsa"
     container_name       = "tfstate"
     key                  = "terraform.tfstate"
-    use_azuread_auth     = true
+    use_oidc             = true
   }
 }
 
