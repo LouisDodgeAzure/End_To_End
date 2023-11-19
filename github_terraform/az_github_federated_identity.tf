@@ -5,7 +5,7 @@ provider "azurerm" {
 provider "azuread" {}
 
 provider "github" {
-    token = var.github_token
+  token = var.github_token
 }
 
 resource "azurerm_resource_group" "example" {
@@ -24,16 +24,15 @@ resource "azuread_application" "example" {
 }
 
 resource "azuread_service_principal" "example" {
-  application_id = azuread_application.example.application_id
+  client_id = azuread_application.example.client_id
 }
 
-resource "azurerm_federated_identity_credential" "example" {
-  name                = var.federated_credential_name
-  resource_group_name = azurerm_resource_group.example.name
-  audience            = [var.federated_credential_audience]
-  issuer              = var.federated_credential_issuer
-  parent_id           = azurerm_user_assigned_identity.example.id
-  subject             = var.federated_credential_subject
+resource "azuread_application_federated_identity_credential" "example" {
+  application_id = azuread_application.example.id
+  display_name          = var.federated_credential_name
+  audiences             = [var.federated_credential_audience]
+  issuer                = var.federated_credential_issuer
+  subject               = var.federated_credential_subject
 }
 
 resource "azurerm_role_assignment" "example" {
@@ -46,7 +45,7 @@ resource "azurerm_role_assignment" "example" {
 resource "github_actions_secret" "azure_client_id" {
   repository      = var.github_repository
   secret_name     = "AZURE_CLIENT_ID"
-  plaintext_value = azuread_application.example.application_id
+  plaintext_value = azuread_application.example.client_id
 }
 
 resource "github_actions_secret" "azure_tenant_id" {
