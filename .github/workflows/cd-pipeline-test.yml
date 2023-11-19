@@ -7,13 +7,16 @@ on:
   workflow_dispatch:
 
 permissions:
-      id-token: write
-      contents: read
+  id-token: write
+  contents: read
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    
+    env:
+      ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+
     steps:
     - uses: actions/checkout@main
 
