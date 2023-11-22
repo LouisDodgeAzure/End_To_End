@@ -4,14 +4,22 @@
 #
 #    pip-compile requirements.in
 #
+certifi==2023.11.17
+    # via requests
 cfgv==3.4.0
     # via pre-commit
+charset-normalizer==3.3.2
+    # via requests
+detect-secrets==1.4.0
+    # via -r requirements.in
 distlib==0.3.7
     # via virtualenv
 filelock==3.13.1
     # via virtualenv
 identify==2.5.31
     # via pre-commit
+idna==3.4
+    # via requests
 nodeenv==1.8.0
     # via pre-commit
 platformdirs==3.11.0
@@ -19,8 +27,14 @@ platformdirs==3.11.0
 pre-commit==3.5.0
     # via -r requirements.in
 pyyaml==6.0.1
-    # via pre-commit
-virtualenv==20.24.6
+    # via
+    #   detect-secrets
+    #   pre-commit
+requests==2.31.0
+    # via detect-secrets
+urllib3==2.1.0
+    # via requests
+virtualenv==20.24.7
     # via pre-commit
 
 # The following packages are considered to be unsafe in a requirements file:
