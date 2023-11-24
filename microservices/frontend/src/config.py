@@ -5,3 +5,8 @@ class DevConfig:
 class ProdConfig:
     DEBUG = False
     # Add other production-specific settings
+    
+class TestConfig:
+    DEBUG = True
+    TESTING = True
+    
