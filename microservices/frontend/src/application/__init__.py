@@ -10,12 +10,10 @@ def init_app():
     env = os.getenv('FLASK_ENV')
     if env == 'dev':
         app.config.from_object(DevConfig)
-    elif env == 'prod':
-        app.config.from_object(ProdConfig)
     elif env == 'test':
         app.config.from_object(TestConfig)
     else:
-        raise ValueError("Invalid or missing FLASK_ENV environment variable")
+        app.config.from_object(ProdConfig)
     
     # Import and register routes, blueprints, etc.
     with app.app_context():
