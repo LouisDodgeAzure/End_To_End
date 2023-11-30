@@ -19,5 +19,5 @@ ENV FLASK_RUN_HOST=0.0.0.0
 ENV FLASK_RUN_PORT=80
 ENV FLASK_ENV=production
 
-# Run app.py when the container launches
-CMD ["flask", "run"]
+# Run wsgi.py when the container launches
+CMD ["python", "wsgi.py"]
